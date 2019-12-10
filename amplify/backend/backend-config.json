@@ -1,0 +1,88 @@
+{
+	"api": {
+		"todo": {
+			"service": "AppSync",
+			"providerPlugin": "awscloudformation",
+			"output": {
+				"authConfig": {
+					"additionalAuthenticationProviders": [],
+					"defaultAuthentication": {
+						"authenticationType": "API_KEY",
+						"apiKeyConfig": {
+							"description": "ToDo description",
+							"apiKeyExpirationDays": "180"
+						}
+					}
+				}
+			}
+		}
+	},
+	"auth": {
+		"logerror0406a252": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation",
+			"dependsOn": []
+		}
+	},
+	"hosting": {
+		"S3AndCloudFront": {
+			"service": "S3AndCloudFront",
+			"providerPlugin": "awscloudformation"
+		}
+	},
+	"predictions": {
+		"identifyText51404782": {
+			"providerPlugin": "awscloudformation",
+			"service": "Rekognition",
+			"dependsOn": [],
+			"identifyType": "identifyText"
+		},
+		"identifyEntities3c24ed99": {
+			"providerPlugin": "awscloudformation",
+			"service": "Rekognition",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "RekognitionIndexFacesTrigger6178b85b",
+					"attributes": [
+						"Name",
+						"Arn",
+						"LambdaExecutionRole"
+					]
+				},
+				{
+					"category": "storage",
+					"resourceName": "s317cda7cd",
+					"attributes": [
+						"BucketName"
+					]
+				}
+			],
+			"identifyType": "identifyEntities"
+		}
+	},
+	"function": {
+		"RekognitionIndexFacesTrigger6178b85b": {
+			"service": "Lambda",
+			"providerPlugin": "awscloudformation",
+			"build": true
+		}
+	},
+	"storage": {
+		"s317cda7cd": {
+			"providerPlugin": "awscloudformation",
+			"service": "S3",
+			"dependsOn": [
+				{
+					"category": "function",
+					"resourceName": "RekognitionIndexFacesTrigger6178b85b",
+					"attributes": [
+						"Name",
+						"Arn",
+						"LambdaExecutionRole"
+					]
+				}
+			]
+		}
+	}
+}

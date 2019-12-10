@@ -1,0 +1,20 @@
+{
+    "dew": {
+        "awscloudformation": {
+            "AuthRoleName": "logerror-dew-20191206153315-authRole",
+            "UnauthRoleArn": "arn:aws:iam::285041128372:role/logerror-dew-20191206153315-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::285041128372:role/logerror-dew-20191206153315-authRole",
+            "Region": "us-east-1",
+            "DeploymentBucketName": "logerror-dew-20191206153315-deployment",
+            "UnauthRoleName": "logerror-dew-20191206153315-unauthRole",
+            "StackName": "logerror-dew-20191206153315",
+            "StackId": "arn:aws:cloudformation:us-east-1:285041128372:stack/logerror-dew-20191206153315/b1210a10-180f-11ea-be23-0ac97ebd7097",
+            "AmplifyAppId": "d1sojf3estm55w"
+        },
+        "categories": {
+            "auth": {
+                "logerror0406a252": {}
+            }
+        }
+    }
+}
